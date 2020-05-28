@@ -257,45 +257,58 @@ class _appState extends State<app> {
   }
 
   image(index) {
-    return Stack(
-      alignment: Alignment.center,
-      children: [
-        Center(
-          child: CupertinoActivityIndicator(),
-        ),
-        Container(
-          height: 150,
-          width: 100,
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(10),
-            // color: Colors.white,
-            boxShadow: [
-              BoxShadow(
-                  color: Colors.grey.withOpacity(0.5),
-                  offset: Offset(0, 0),
-                  blurRadius: 10,
-                  spreadRadius: 3)
-            ],
-          ),
-        ),
-        ClipRRect(
-            borderRadius: BorderRadius.circular(10),
-            child:
-                /* Image.network(
+    print(data[index]["poster_path"]);
+    return (data[index]["poster_path"] == null)
+        ? Container(
+            height: 150,
+            width: 100,
+            color: Colors.red,
+            child: Center(
+              child: Text(
+                "Poster Not Available",
+                textAlign: TextAlign.center,
+              ),
+            ),
+          )
+        : Stack(
+            alignment: Alignment.center,
+            children: [
+              Center(
+                child: CupertinoActivityIndicator(),
+              ),
+              Container(
+                height: 150,
+                width: 100,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10),
+                  // color: Colors.white,
+                  boxShadow: [
+                    BoxShadow(
+                        color: Colors.grey.withOpacity(0.5),
+                        offset: Offset(0, 0),
+                        blurRadius: 10,
+                        spreadRadius: 3)
+                  ],
+                ),
+              ),
+              ClipRRect(
+                  borderRadius: BorderRadius.circular(10),
+                  child:
+                      /* Image.network(
             "https://image.tmdb.org/t/p/w500/" +
                 data[index]["poster_path"].toString(),
             width: 100,
             height: 150,
           ), */
-                Image(
-              image: NetworkImageWithRetry(
-                "https://image.tmdb.org/t/p/w500/" +
-                    data[index]["poster_path"].toString(),
-              ),
-              width: 100,
-              height: 150,
-            )),
-      ],
-    );
+                      Image(
+                    image: NetworkImageWithRetry(
+                      "https://image.tmdb.org/t/p/w500/" +
+                          data[index]["poster_path"].toString(),
+                    ),
+                    width: 100,
+                    height: 150,
+                  )),
+            ],
+          );
   }
 }
