@@ -99,7 +99,8 @@ class _appState extends State<app> {
                               padding: const EdgeInsets.all(8.0),
                               child: InkWell(
                                 onTap: () {
-                                  print(data[index]["original_title"]);
+                                  launch("https://www.themoviedb.org/movie/" +
+                                      data[index]["id"].toString());
                                 },
                                 child: Stack(
                                   alignment: Alignment.bottomCenter,
