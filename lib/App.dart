@@ -148,6 +148,8 @@ class _appState extends State<app> {
                                                           .substring(0, 4) +
                                                       ")",
                                                   maxLines: 2,
+                                                  overflow:
+                                                      TextOverflow.ellipsis,
                                                   textAlign: TextAlign.center,
                                                   style: TextStyle(
                                                     fontSize:
@@ -195,8 +197,11 @@ class _appState extends State<app> {
                                                         fontWeight:
                                                             FontWeight.bold,
                                                         fontSize: ScreenUtil()
-                                                            .setSp(50),
+                                                            .setSp(70),
                                                       ),
+                                                    ),
+                                                    SizedBox(
+                                                      width: 19,
                                                     ),
                                                     SmoothStarRating(
                                                         allowHalfRating: false,
