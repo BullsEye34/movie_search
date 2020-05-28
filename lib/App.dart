@@ -23,6 +23,7 @@ class _appState extends State<app> {
         list = json.decode(o);
         data = list["results"];
       });
+      // print(data[1]["genre_ids"][0]);
     });
   }
 
@@ -39,6 +40,9 @@ class _appState extends State<app> {
       backgroundColor: Colors.white,
       body: Container(
         color: Colors.white,
+        child: Column(
+          children: [],
+        ),
       ),
     );
   }
