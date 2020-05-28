@@ -13,16 +13,25 @@ class app extends StatefulWidget {
 
 class _appState extends State<app> {
   var movies = new List<Movie>();
+  Map<String, dynamic> list;
+  List<dynamic> data;
   _getMovies(var search) {
     API.getUsers(search).then((response) {
       var o = response;
-      //print(o.body.toString().substring(3));
-      o = o.body.toString().substring(3);
+      o = o.body.toString();
+      print(o);
       setState(() {
-        Iterable list = json.decode(o);
-        movies = list.map((model) => Movie.fromJson(model)).toList();
+        list = json.decode(o);
+        data = list["results"];
       });
     });
+  }
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    _getMovies("John");
   }
 
   @override
