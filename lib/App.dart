@@ -116,7 +116,7 @@ class _appState extends State<app> {
                                         boxShadow: [
                                           BoxShadow(
                                               color:
-                                                  Colors.grey.withOpacity(.1),
+                                                  Colors.grey.withOpacity(.2),
                                               offset: Offset(0, 0),
                                               blurRadius: 10,
                                               spreadRadius: 3)
