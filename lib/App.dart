@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:flutter_image/network.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -179,9 +180,13 @@ class _appState extends State<app> {
                                                       MainAxisAlignment.start,
                                                   children: [
                                                     Text(
-                                                      data[index]
-                                                              ["vote_average"]
-                                                          .toString(),
+                                                      (data[index][
+                                                                  "vote_average"] ==
+                                                              0)
+                                                          ? "N/A"
+                                                          : data[index][
+                                                                  "vote_average"]
+                                                              .toString(),
                                                       style: TextStyle(
                                                         color: Colors.blue,
                                                         fontWeight:
@@ -266,14 +271,22 @@ class _appState extends State<app> {
           ),
         ),
         ClipRRect(
-          borderRadius: BorderRadius.circular(10),
-          child: Image.network(
+            borderRadius: BorderRadius.circular(10),
+            child:
+                /* Image.network(
             "https://image.tmdb.org/t/p/w500/" +
                 data[index]["poster_path"].toString(),
             width: 100,
             height: 150,
-          ),
-        ),
+          ), */
+                Image(
+              image: NetworkImageWithRetry(
+                "https://image.tmdb.org/t/p/w500/" +
+                    data[index]["poster_path"].toString(),
+              ),
+              width: 100,
+              height: 150,
+            )),
       ],
     );
   }
