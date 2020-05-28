@@ -133,7 +133,11 @@ class _appState extends State<app> {
                                               MainAxisAlignment.center,
                                           children: [
                                             SizedBox(
-                                              width: 115,
+                                              width: (MediaQuery.of(context)
+                                                          .devicePixelRatio <
+                                                      3.3)
+                                                  ? 115
+                                                  : 90,
                                             ),
                                             Column(
                                               mainAxisAlignment:
@@ -284,39 +288,37 @@ class _appState extends State<app> {
               Center(
                 child: CupertinoActivityIndicator(),
               ),
-              ClipRRect(
-                child: Container(
-                  height: (MediaQuery.of(context).devicePixelRatio < 3.3)
-                      ? 150
-                      : 125,
-                  width: (MediaQuery.of(context).devicePixelRatio < 3.3)
-                      ? 100
-                      : 80,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),
-                    // color: Colors.white,
-                    boxShadow: [
-                      BoxShadow(
-                          color: Colors.grey.withOpacity(0.5),
-                          offset: Offset(0, 0),
-                          blurRadius: 10,
-                          spreadRadius: 3)
-                    ],
-                  ),
+              Container(
+                height:
+                    (MediaQuery.of(context).devicePixelRatio < 3.3) ? 150 : 125,
+                width:
+                    (MediaQuery.of(context).devicePixelRatio < 3.3) ? 100 : 80,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10),
+                  // color: Colors.white,
+                  boxShadow: [
+                    BoxShadow(
+                        color: Colors.grey.withOpacity(0.5),
+                        offset: Offset(0, 0),
+                        blurRadius: 10,
+                        spreadRadius: 3)
+                  ],
                 ),
               ),
               ClipRRect(
-                  borderRadius: BorderRadius.circular(10),
-                  child: Image(
-                    image: NetworkImageWithRetry(
-                      "https://image.tmdb.org/t/p/w500/" +
-                          data[index]["poster_path"].toString(),
-                    ),
-                    width: (MediaQuery.of(context).devicePixelRatio < 3.3)
-                        ? 100
-                        : 80,
-                    height: 150,
-                  )),
+                borderRadius: BorderRadius.circular(
+                    (MediaQuery.of(context).devicePixelRatio < 3.3) ? 10 : 30),
+                child: Image(
+                  image: NetworkImageWithRetry(
+                    "https://image.tmdb.org/t/p/w500/" +
+                        data[index]["poster_path"].toString(),
+                  ),
+                  width: (MediaQuery.of(context).devicePixelRatio < 3.3)
+                      ? 100
+                      : 80,
+                  height: 150,
+                ),
+              ),
             ],
           );
   }
