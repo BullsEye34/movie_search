@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
 
 class app extends StatefulWidget {
   @override
@@ -44,6 +45,14 @@ class movie {
       data['results'] = this.results.map((v) => v.toJson()).toList();
     }
     return data;
+  }
+}
+
+class API {
+  static Future getUsers() {
+    var url = "https://melange2020.in/Reg/data.json";
+    print(http.get(url));
+    return http.get(url);
   }
 }
 
