@@ -150,11 +150,14 @@ class _appState extends State<app> {
                                             Divider(),
                                             Flexible(
                                               child: Text(
-                                                "Rating to Come Here",
+                                                data[index]["vote_average"]
+                                                    .toString(),
                                                 style: TextStyle(
-                                                    color: Colors.blue,
-                                                    fontWeight:
-                                                        FontWeight.bold),
+                                                  color: Colors.blue,
+                                                  fontWeight: FontWeight.bold,
+                                                  fontSize:
+                                                      ScreenUtil().setSp(50),
+                                                ),
                                               ),
                                             )
                                           ],
