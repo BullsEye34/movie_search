@@ -128,7 +128,8 @@ class _appState extends State<app> {
                                           children: [
                                             Flexible(
                                               child: Text(
-                                                data[index]["title"].toString(),
+                                                data[index]["original_title"]
+                                                    .toString(),
                                                 style: TextStyle(
                                                   fontSize:
                                                       ScreenUtil().setSp(40),
