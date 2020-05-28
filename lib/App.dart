@@ -16,6 +16,7 @@ class _appState extends State<app> {
   var movies = new List<Movie>();
   Map<String, dynamic> list;
   List<dynamic> data = new List<dynamic>();
+
   _getMovies(var search) {
     API.getUsers(search).then((response) {
       var o = response;
