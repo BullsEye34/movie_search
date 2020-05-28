@@ -141,7 +141,7 @@ class _appState extends State<app> {
                                             Flexible(
                                               child: Text(
                                                 "Year: " +
-                                                    data[index]["description"]
+                                                    data[index]["release_date"]
                                                         .toString(),
                                                 style: TextStyle(
                                                     color: Colors.grey),
