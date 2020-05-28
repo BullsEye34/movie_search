@@ -88,7 +88,97 @@ class _appState extends State<app> {
                   child: ListView.builder(
                     itemCount: (data == null) ? 0 : data.length,
                     itemBuilder: (context, index) {
-                      return Text(data[index]["title"]);
+                      //return Text(data[index]["title"]);
+                      return (list.isEmpty)
+                          ? CupertinoActivityIndicator()
+                          : Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Stack(
+                                alignment: Alignment.bottomCenter,
+                                children: [
+                                  Container(
+                                    height: 140,
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(15),
+                                      color: Colors.white,
+                                      boxShadow: [
+                                        BoxShadow(
+                                            color: Colors.grey.withOpacity(.1),
+                                            offset: Offset(0, 0),
+                                            blurRadius: 10,
+                                            spreadRadius: 3)
+                                      ],
+                                    ),
+                                    child:
+                                        /* Text(
+                                      list["results"][index]["title"].toString(),
+                                    ), */
+                                        Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: [
+                                        SizedBox(
+                                          width: 120,
+                                        ),
+                                        Column(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          children: [
+                                            Flexible(
+                                              child: Text(
+                                                list["results"][index]["title"]
+                                                    .toString(),
+                                                style: TextStyle(
+                                                  fontSize:
+                                                      ScreenUtil().setSp(40),
+                                                  fontWeight: FontWeight.bold,
+                                                ),
+                                              ),
+                                            ),
+                                            Divider(),
+                                            Flexible(
+                                              child: Text(
+                                                "Year: " +
+                                                    list["results"][index]
+                                                            ["description"]
+                                                        .toString(),
+                                                style: TextStyle(
+                                                    color: Colors.grey),
+                                              ),
+                                            ),
+                                            Divider(),
+                                            Flexible(
+                                              child: Text(
+                                                "Rating to Come Here",
+                                                style: TextStyle(
+                                                    color: Colors.blue,
+                                                    fontWeight:
+                                                        FontWeight.bold),
+                                              ),
+                                            )
+                                          ],
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                  Row(
+                                    children: [
+                                      SizedBox(
+                                        width: 10,
+                                      ),
+                                      Column(
+                                        children: [
+                                          image(index),
+                                          SizedBox(
+                                            height: 10,
+                                          )
+                                        ],
+                                      )
+                                    ],
+                                  )
+                                ],
+                              ),
+                            );
                     },
                     shrinkWrap: true,
                   ),
@@ -98,6 +188,40 @@ class _appState extends State<app> {
           ),
         ),
       ),
+    );
+  }
+
+  image(index) {
+    return Stack(
+      alignment: Alignment.center,
+      children: [
+        Center(
+          child: CupertinoActivityIndicator(),
+        ),
+        Container(
+          height: 150,
+          width: 100,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(10),
+            // color: Colors.white,
+            boxShadow: [
+              BoxShadow(
+                  color: Colors.grey.withOpacity(0.5),
+                  offset: Offset(0, 0),
+                  blurRadius: 10,
+                  spreadRadius: 3)
+            ],
+          ),
+        ),
+        ClipRRect(
+          borderRadius: BorderRadius.circular(10),
+          child: Image.network(
+            list["results"][index]["image"].toString(),
+            width: 100,
+            height: 150,
+          ),
+        ),
+      ],
     );
   }
 }
