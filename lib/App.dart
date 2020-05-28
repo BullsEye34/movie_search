@@ -266,6 +266,7 @@ class _appState extends State<app> {
             child: Center(
               child: Text(
                 "Poster Not Available",
+                style: TextStyle(color: Colors.white),
                 textAlign: TextAlign.center,
               ),
             ),
