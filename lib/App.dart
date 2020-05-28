@@ -174,8 +174,7 @@ class _appState extends State<app> {
                                                           2,
                                                       size: 20.0,
                                                       isReadOnly: true,
-                                                      color:
-                                                          Colors.yellowAccent,
+                                                      color: Color(0xffFFD700),
                                                       borderColor: Colors.grey,
                                                       spacing: 0.0)
                                                 ],
