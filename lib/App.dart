@@ -238,7 +238,7 @@ class _appState extends State<app> {
                                           ),
                                           Column(
                                             children: [
-                                              image(index),
+                                              image(index, context),
                                               SizedBox(
                                                 height: 10,
                                               )
@@ -263,7 +263,7 @@ class _appState extends State<app> {
     );
   }
 
-  image(index) {
+  image(index, context) {
     print(data[index]["poster_path"]);
     return (data[index]["poster_path"] == null)
         ? Container(
@@ -284,36 +284,37 @@ class _appState extends State<app> {
               Center(
                 child: CupertinoActivityIndicator(),
               ),
-              Container(
-                height: 150,
-                width: 100,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(10),
-                  // color: Colors.white,
-                  boxShadow: [
-                    BoxShadow(
-                        color: Colors.grey.withOpacity(0.5),
-                        offset: Offset(0, 0),
-                        blurRadius: 10,
-                        spreadRadius: 3)
-                  ],
+              ClipRRect(
+                child: Container(
+                  height: (MediaQuery.of(context).devicePixelRatio < 3.3)
+                      ? 150
+                      : 125,
+                  width: (MediaQuery.of(context).devicePixelRatio < 3.3)
+                      ? 100
+                      : 80,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10),
+                    // color: Colors.white,
+                    boxShadow: [
+                      BoxShadow(
+                          color: Colors.grey.withOpacity(0.5),
+                          offset: Offset(0, 0),
+                          blurRadius: 10,
+                          spreadRadius: 3)
+                    ],
+                  ),
                 ),
               ),
               ClipRRect(
                   borderRadius: BorderRadius.circular(10),
-                  child:
-                      /* Image.network(
-            "https://image.tmdb.org/t/p/w500/" +
-                data[index]["poster_path"].toString(),
-            width: 100,
-            height: 150,
-          ), */
-                      Image(
+                  child: Image(
                     image: NetworkImageWithRetry(
                       "https://image.tmdb.org/t/p/w500/" +
                           data[index]["poster_path"].toString(),
                     ),
-                    width: 100,
+                    width: (MediaQuery.of(context).devicePixelRatio < 3.3)
+                        ? 100
+                        : 80,
                     height: 150,
                   )),
             ],
