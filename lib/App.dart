@@ -159,7 +159,11 @@ class _appState extends State<app> {
                                               Divider(),
                                               Flexible(
                                                 child: Container(
-                                                  width: w / 1.59,
+                                                  width: (MediaQuery.of(context)
+                                                              .devicePixelRatio <
+                                                          3.3)
+                                                      ? w / 1.59
+                                                      : w / 2,
                                                   child: Text(
                                                     data[index]["overview"]
                                                         .toString(),
