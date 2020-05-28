@@ -147,11 +147,21 @@ class _appState extends State<app> {
                                             ),
                                             Divider(),
                                             Flexible(
-                                              child: Text(
-                                                data[index]["release_date"]
-                                                    .toString(),
-                                                style: TextStyle(
-                                                    color: Colors.grey),
+                                              child: Container(
+                                                width: MediaQuery.of(context)
+                                                        .size
+                                                        .width /
+                                                    1.59,
+                                                child: Text(
+                                                  data[index]["overview"]
+                                                      .toString(),
+                                                  maxLines: 2,
+                                                  textAlign: TextAlign.center,
+                                                  overflow:
+                                                      TextOverflow.ellipsis,
+                                                  style: TextStyle(
+                                                      color: Colors.grey),
+                                                ),
                                               ),
                                             ),
                                             Divider(),
