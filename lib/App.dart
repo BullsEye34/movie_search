@@ -130,7 +130,14 @@ class _appState extends State<app> {
                                             Flexible(
                                               child: Text(
                                                 data[index]["original_title"]
-                                                    .toString(),
+                                                        .toString() +
+                                                    " \n(" +
+                                                    data[index]["release_date"]
+                                                        .toString()
+                                                        .substring(0, 4) +
+                                                    ")",
+                                                maxLines: 2,
+                                                textAlign: TextAlign.center,
                                                 style: TextStyle(
                                                   fontSize:
                                                       ScreenUtil().setSp(40),
@@ -141,9 +148,8 @@ class _appState extends State<app> {
                                             Divider(),
                                             Flexible(
                                               child: Text(
-                                                "Year: " +
-                                                    data[index]["release_date"]
-                                                        .toString(),
+                                                data[index]["release_date"]
+                                                    .toString(),
                                                 style: TextStyle(
                                                     color: Colors.grey),
                                               ),
