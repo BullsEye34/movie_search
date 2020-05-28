@@ -1,5 +1,5 @@
 import 'dart:convert';
-
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -38,6 +38,7 @@ class _appState extends State<app> {
 
   @override
   Widget build(BuildContext context) {
+    ScreenUtil.init(context);
     return Scaffold(
       backgroundColor: Colors.white,
       body: SafeArea(
