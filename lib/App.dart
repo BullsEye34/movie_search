@@ -19,7 +19,6 @@ class _appState extends State<app> {
     API.getUsers(search).then((response) {
       var o = response;
       o = o.body.toString();
-      print(o);
       setState(() {
         list = json.decode(o);
         data = list["results"];
