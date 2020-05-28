@@ -41,6 +41,8 @@ class _appState extends State<app> {
 
   @override
   Widget build(BuildContext context) {
+    var w = MediaQuery.of(context).size.width;
+    var h = MediaQuery.of(context).size.height;
     ScreenUtil.init(context);
     return Scaffold(
       backgroundColor: Colors.white,
@@ -157,10 +159,7 @@ class _appState extends State<app> {
                                               Divider(),
                                               Flexible(
                                                 child: Container(
-                                                  width: MediaQuery.of(context)
-                                                          .size
-                                                          .width /
-                                                      1.59,
+                                                  width: w / 1.59,
                                                   child: Text(
                                                     data[index]["overview"]
                                                         .toString(),
