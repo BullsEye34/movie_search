@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:smooth_star_rating/smooth_star_rating.dart';
 
 import 'Models/API.dart';
 import 'Models/Movie.dart';
@@ -149,15 +150,35 @@ class _appState extends State<app> {
                                             ),
                                             Divider(),
                                             Flexible(
-                                              child: Text(
-                                                data[index]["vote_average"]
-                                                    .toString(),
-                                                style: TextStyle(
-                                                  color: Colors.blue,
-                                                  fontWeight: FontWeight.bold,
-                                                  fontSize:
-                                                      ScreenUtil().setSp(50),
-                                                ),
+                                              child: Row(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment.start,
+                                                children: [
+                                                  Text(
+                                                    data[index]["vote_average"]
+                                                        .toString(),
+                                                    style: TextStyle(
+                                                      color: Colors.blue,
+                                                      fontWeight:
+                                                          FontWeight.bold,
+                                                      fontSize: ScreenUtil()
+                                                          .setSp(50),
+                                                    ),
+                                                  ),
+                                                  SmoothStarRating(
+                                                      allowHalfRating: false,
+                                                      onRated: (v) {},
+                                                      starCount: 5,
+                                                      rating: data[index]
+                                                              ["vote_average"] /
+                                                          2,
+                                                      size: 20.0,
+                                                      isReadOnly: true,
+                                                      color:
+                                                          Colors.yellowAccent,
+                                                      borderColor: Colors.grey,
+                                                      spacing: 0.0)
+                                                ],
                                               ),
                                             )
                                           ],
