@@ -96,127 +96,137 @@ class _appState extends State<app> {
                           ? CupertinoActivityIndicator()
                           : Padding(
                               padding: const EdgeInsets.all(8.0),
-                              child: Stack(
-                                alignment: Alignment.bottomCenter,
-                                children: [
-                                  Container(
-                                    height: 140,
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(15),
-                                      color: Colors.white,
-                                      boxShadow: [
-                                        BoxShadow(
-                                            color: Colors.grey.withOpacity(.1),
-                                            offset: Offset(0, 0),
-                                            blurRadius: 10,
-                                            spreadRadius: 3)
-                                      ],
-                                    ),
-                                    child:
-                                        /* Text(
-                                      list["results"][index]["title"].toString(),
-                                    ), */
-                                        Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                      children: [
-                                        SizedBox(
-                                          width: 120,
-                                        ),
-                                        Column(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.center,
-                                          children: [
-                                            Flexible(
-                                              child: Text(
-                                                data[index]["original_title"]
-                                                        .toString() +
-                                                    " \n(" +
-                                                    data[index]["release_date"]
-                                                        .toString()
-                                                        .substring(0, 4) +
-                                                    ")",
-                                                maxLines: 2,
-                                                textAlign: TextAlign.center,
-                                                style: TextStyle(
-                                                  fontSize:
-                                                      ScreenUtil().setSp(40),
-                                                  fontWeight: FontWeight.bold,
-                                                ),
-                                              ),
-                                            ),
-                                            Divider(),
-                                            Flexible(
-                                              child: Container(
-                                                width: MediaQuery.of(context)
-                                                        .size
-                                                        .width /
-                                                    1.59,
+                              child: InkWell(
+                                onTap: () {
+                                  print(data[index]["original_title"]);
+                                },
+                                child: Stack(
+                                  alignment: Alignment.bottomCenter,
+                                  children: [
+                                    Container(
+                                      height: 140,
+                                      decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(15),
+                                        color: Colors.white,
+                                        boxShadow: [
+                                          BoxShadow(
+                                              color:
+                                                  Colors.grey.withOpacity(.1),
+                                              offset: Offset(0, 0),
+                                              blurRadius: 10,
+                                              spreadRadius: 3)
+                                        ],
+                                      ),
+                                      child:
+                                          /* Text(
+                                        list["results"][index]["title"].toString(),
+                                      ), */
+                                          Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: [
+                                          SizedBox(
+                                            width: 120,
+                                          ),
+                                          Column(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.center,
+                                            children: [
+                                              Flexible(
                                                 child: Text(
-                                                  data[index]["overview"]
-                                                      .toString(),
+                                                  data[index]["original_title"]
+                                                          .toString() +
+                                                      " \n(" +
+                                                      data[index]
+                                                              ["release_date"]
+                                                          .toString()
+                                                          .substring(0, 4) +
+                                                      ")",
                                                   maxLines: 2,
                                                   textAlign: TextAlign.center,
-                                                  overflow:
-                                                      TextOverflow.ellipsis,
                                                   style: TextStyle(
-                                                      color: Colors.grey),
+                                                    fontSize:
+                                                        ScreenUtil().setSp(40),
+                                                    fontWeight: FontWeight.bold,
+                                                  ),
                                                 ),
                                               ),
-                                            ),
-                                            Divider(),
-                                            Flexible(
-                                              child: Row(
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment.start,
-                                                children: [
-                                                  Text(
-                                                    data[index]["vote_average"]
+                                              Divider(),
+                                              Flexible(
+                                                child: Container(
+                                                  width: MediaQuery.of(context)
+                                                          .size
+                                                          .width /
+                                                      1.59,
+                                                  child: Text(
+                                                    data[index]["overview"]
                                                         .toString(),
+                                                    maxLines: 2,
+                                                    textAlign: TextAlign.center,
+                                                    overflow:
+                                                        TextOverflow.ellipsis,
                                                     style: TextStyle(
-                                                      color: Colors.blue,
-                                                      fontWeight:
-                                                          FontWeight.bold,
-                                                      fontSize: ScreenUtil()
-                                                          .setSp(50),
-                                                    ),
+                                                        color: Colors.grey),
                                                   ),
-                                                  SmoothStarRating(
-                                                      allowHalfRating: false,
-                                                      onRated: (v) {},
-                                                      starCount: 5,
-                                                      rating: data[index]
-                                                              ["vote_average"] /
-                                                          2,
-                                                      size: 20.0,
-                                                      isReadOnly: true,
-                                                      color: Color(0xffFFD700),
-                                                      borderColor: Colors.grey,
-                                                      spacing: 0.0)
-                                                ],
+                                                ),
                                               ),
+                                              Divider(),
+                                              Flexible(
+                                                child: Row(
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment.start,
+                                                  children: [
+                                                    Text(
+                                                      data[index]
+                                                              ["vote_average"]
+                                                          .toString(),
+                                                      style: TextStyle(
+                                                        color: Colors.blue,
+                                                        fontWeight:
+                                                            FontWeight.bold,
+                                                        fontSize: ScreenUtil()
+                                                            .setSp(50),
+                                                      ),
+                                                    ),
+                                                    SmoothStarRating(
+                                                        allowHalfRating: false,
+                                                        onRated: (v) {},
+                                                        starCount: 5,
+                                                        rating: data[index][
+                                                                "vote_average"] /
+                                                            2,
+                                                        size: 20.0,
+                                                        isReadOnly: true,
+                                                        color:
+                                                            Color(0xffFFD700),
+                                                        borderColor:
+                                                            Colors.grey,
+                                                        spacing: 0.0)
+                                                  ],
+                                                ),
+                                              )
+                                            ],
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                    Row(
+                                      children: [
+                                        SizedBox(
+                                          width: 10,
+                                        ),
+                                        Column(
+                                          children: [
+                                            image(index),
+                                            SizedBox(
+                                              height: 10,
                                             )
                                           ],
-                                        ),
+                                        )
                                       ],
-                                    ),
-                                  ),
-                                  Row(
-                                    children: [
-                                      SizedBox(
-                                        width: 10,
-                                      ),
-                                      Column(
-                                        children: [
-                                          image(index),
-                                          SizedBox(
-                                            height: 10,
-                                          )
-                                        ],
-                                      )
-                                    ],
-                                  )
-                                ],
+                                    )
+                                  ],
+                                ),
                               ),
                             );
                     },
