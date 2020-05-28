@@ -128,8 +128,7 @@ class _appState extends State<app> {
                                           children: [
                                             Flexible(
                                               child: Text(
-                                                list["results"][index]["title"]
-                                                    .toString(),
+                                                data[index]["title"].toString(),
                                                 style: TextStyle(
                                                   fontSize:
                                                       ScreenUtil().setSp(40),
@@ -141,8 +140,7 @@ class _appState extends State<app> {
                                             Flexible(
                                               child: Text(
                                                 "Year: " +
-                                                    list["results"][index]
-                                                            ["description"]
+                                                    data[index]["description"]
                                                         .toString(),
                                                 style: TextStyle(
                                                     color: Colors.grey),
@@ -218,7 +216,8 @@ class _appState extends State<app> {
         ClipRRect(
           borderRadius: BorderRadius.circular(10),
           child: Image.network(
-            list["results"][index]["image"].toString(),
+            "https://image.tmdb.org/t/p/w500/" +
+                data[index]["poster_path"].toString(),
             width: 100,
             height: 150,
           ),
