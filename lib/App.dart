@@ -58,6 +58,7 @@ class _appState extends State<app> {
 
   @override
   Widget build(BuildContext context) {
+    // print(data2[1]['name']);
     var w = MediaQuery.of(context).size.width;
     var h = MediaQuery.of(context).size.height;
     ScreenUtil.init(context);
