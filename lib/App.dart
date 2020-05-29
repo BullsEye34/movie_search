@@ -8,6 +8,7 @@ import 'package:url_launcher/url_launcher.dart';
 
 import 'Models/API.dart';
 import 'Models/Movie.dart';
+import 'Models/Genre.dart';
 
 class app extends StatefulWidget {
   @override
