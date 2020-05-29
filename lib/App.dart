@@ -7,6 +7,7 @@ import 'package:smooth_star_rating/smooth_star_rating.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import 'Models/API.dart';
+import 'Models/API2.dart';
 import 'Models/Movie.dart';
 import 'Models/Genre.dart';
 
@@ -17,9 +18,12 @@ class app extends StatefulWidget {
 
 class _appState extends State<app> {
   TextEditingController searchText = new TextEditingController();
-  var movies = new List<Movie>();
+  //var movies = new List<Movie>();
+  // var genre = new List<Movie>();
   Map<String, dynamic> list;
+  Map<String, dynamic> list2;
   List<dynamic> data = new List<dynamic>();
+  List<dynamic> data2 = new List<dynamic>();
 
   _getMovies(var search) {
     API.getUsers(search).then((response) {
@@ -33,11 +37,23 @@ class _appState extends State<app> {
     });
   }
 
+  _getGenre() {
+    API2.getUsers().then((response) {
+      var o = response;
+      o = o.body.toString();
+      setState(() {
+        list2 = json.decode(o);
+        data2 = list2["genres"];
+      });
+    });
+  }
+
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
     _getMovies("John");
+    _getGenre();
   }
 
   @override
